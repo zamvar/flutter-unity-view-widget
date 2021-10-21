@@ -92,10 +92,10 @@ class _UnityWidgetState extends State<UnityWidget> {
   }
 
   Future<void> onPlatformViewCreated(int id) async {
-    final controller = await UnityWidgetController.init(0, this);
-    _controller.complete(controller);
     final UnityCreatedCallback? onUnityCreated = widget.onUnityCreated;
     if (onUnityCreated != null) {
+      final controller = await UnityWidgetController.init(id, this);
+      _controller.complete(controller);
       onUnityCreated(controller);
     }
     print('*********************************************');
